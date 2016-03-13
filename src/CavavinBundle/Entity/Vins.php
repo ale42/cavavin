@@ -43,11 +43,25 @@ class Vins
     private $quantite;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="year", type="integer")
+     */
+    private $year;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=255)
+     */
+    private $color;
 
 
     /**
@@ -155,5 +169,52 @@ class Vins
     {
         return $this->type;
     }
-}
 
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return Vins
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set year
+     *
+     * @param integer $year
+     *
+     * @return Vins
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * Get year
+     *
+     * @return integer
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+}

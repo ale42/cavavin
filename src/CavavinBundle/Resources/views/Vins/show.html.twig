@@ -2,7 +2,6 @@
 
 {% block body -%}
     <h1>Vins</h1>
-
     <table class="record_properties table table-striped">
         <tbody>
             <tr>
@@ -21,20 +20,33 @@
                 <th>Type</th>
                 <td>{{ entity.type }}</td>
             </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>
+                    {% if entity.color == 'white' %}
+                        Blanc
+                    {% elseif entity.color == 'red' %}
+                        Rouge
+                    {% elseif entity.color == 'rose' %}
+                        Rosé
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('vins') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('vins_edit', { 'id': entity.id }) }}">
-            Editer
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <a class="btn btn-xs btn-primary" href="{{ path('vins') }}">
+        Retourner à ma cave
+    </a>
+    <br/>
+    <br/>
+    <a class="btn btn-xs btn-success" href="{{ path('vins_edit', { 'id': entity.id }) }}">
+        Editer
+    </a>
+    <br/>
+    <br/>
+
+    {{ form(delete_form) }}
 {% endblock %}

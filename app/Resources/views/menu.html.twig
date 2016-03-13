@@ -1,14 +1,21 @@
 <ul class="nav navbar-nav">
 
     <li>
-        {#<a href="{{ path('app_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a>#}
+        <a href="/">
+            <span class="glyphicon glyphicon-glass"></span>
+            Accueil
+            <span class="glyphicon glyphicon-glass"></span>
+        </a>
     </li>
 
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vins</a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('vins') }}">Vins</a></li>
-        </ul>
-    </li>
+    {#<li class="dropdown">#}
+        {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vins</a>#}
+        {#<ul class="dropdown-menu">#}
+            <li><a href="{{ path('homepage') }}">Ma cave complète</a></li>
+            <li><a href="{{ path('vinsBlancs') }}">Vins blancs</a></li>
+            <li><a href="{{ path('vins') }}">Vins rouges</a></li>
+            <li><a href="{{ path('vins') }}">Vins rosés</a></li>
+        {#</ul>#}
+    {#</li>#}
 
 </ul>

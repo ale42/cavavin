@@ -1,34 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Vins list</h1>
+    <h1>Ma cave</h1>
 
     <table class="records_list table table-striped">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Region</th>
-                <th>Quantite</th>
-                <th>Type</th>
-                <th>Actions</th>
+                <th class="center">Nom</th>
+                <th class="center">Region</th>
+                <th class="center">Type</th>
+                <th class="center">Couleur</th>
+                <th class="center">Quantite</th>
+                <th class="center">Millésime</th>
+                <th class="center">Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for vin in listVins %}
             <tr>
-                <td><a href="{{ path('vins_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
-                <td>{{ entity.region }}</td>
-                <td>{{ entity.quantite }}</td>
-                <td>{{ entity.type }}</td>
-                <td>
-                    <a class="btn btn-xs btn-primary" href="{{ path('vins_show', { 'id': entity.id }) }}">Voir</a>
-                    <a class="btn btn-xs btn-warning" href="{{ path('vins_edit', { 'id': entity.id }) }}">Editer</a>
+                <td class="center"><a href="{{ path('vins_show', { 'id': vin.id }) }}">{{ vin.nom }}</a></td>
+                <td class="center">{{ vin.region }}</td>
+                <td class="center">{{ vin.type }}</td>
+                <td class="center">
+                    {% if vin.color == 'white' %}
+                        Blanc
+                    {% elseif vin.color == 'red' %}
+                        Rouge
+                    {% elseif vin.color == 'rose' %}
+                        Rosé
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                <td class="center" {% if vin.quantite < 5 %}style="color:#c9302c"{% endif %}> {% if vin.quantite < 5 %}Plus que {% endif %}{{ vin.quantite }} {{ vin.quantite == 1 ? 'bouteille' : 'bouteilles' }}</td>
+                <td class="center">{{ vin.year == 0 ? '-' : vin.year }}</td>
+                <td class="center">
+                    <a class="btn btn-xs btn-primary" href="{{ path('vins_show', { 'id': vin.id }) }}">Voir</a>
+                    <a class="btn btn-xs btn-warning" href="{{ path('vins_edit', { 'id': vin.id }) }}">Editer</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <a class="btn btn-sm btn-success" href="{{ path('vins_new') }}">
-        Créer un nouveau vin
+        Ajouter une nouvelle bouteille
     </a>
     {% endblock %}

@@ -1,17 +1,48 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Vins edition</h1>
+    <h1>Modification de {{ edit_form.vars.value.nom }}</h1>
 
-    {{ form(edit_form) }}
-    {{ dump(edit_form.nom) }}
+    <table class="record_properties table table-striped">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ form_widget(edit_form.nom) }}</td>
+        </tr>
+        <tr>
+            <th>Region</th>
+            <td>{{ form_widget(edit_form.region) }}</td>
+        </tr>
+        <tr>
+            <th>Quantité</th>
+            <td>{{ form_widget(edit_form.quantite) }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ form_widget(edit_form.type) }}</td>
+        </tr>
+        <tr>
+            <th>Couleur</th>
+            <td>{{ form_widget(edit_form.color) }}</td>
+        </tr>
+        <tr>
+            <th>Millésime</th>
+            <td>{{ form_widget(edit_form.year) }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {#{{ form(edit_form) }}#}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('vins') }}">
-            Retourner a la liste
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form_rest(edit_form) }}
+
+    <br/>
+
+    <a class="btn btn-xs btn-primary" href="{{ path('vins') }}">
+        Retourner a la cave
+    </a>
+
+    <br/>
+    <br/>
+
+    {{ form(delete_form) }}
 {% endblock %}

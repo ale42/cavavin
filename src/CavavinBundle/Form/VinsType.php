@@ -16,12 +16,48 @@ class VinsType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('region')
+            ->add('region', 'choice', array(
+                'choices' => array(
+                    'Alsace' => "Alsace",
+                    'Bordeaux' => "Bordeaux",
+                    'Beaujolais' => "Beaujolais",
+                    'Bourgogne' => "Bourgogne",
+                    'Champagne' => "Champagne",
+                    'Cognac' => "Cognac",
+                    'Corse' => "Corse",
+                    'Jura' => "Jura",
+                    'Languedoc-Roussillon' => "Languedoc-Roussillon",
+                    'Loire' => "Loire",
+                    'Provence' => "Provence",
+                    'Savoie' => "Savoie",
+                    'Sud-Ouest' => "Sud-Ouest"
+                    ),
+                'multiple' => false,
+                'empty_value' => '- Choisissez une région -'
+            ))
+            ->add('type', 'choice', array(
+                'choices' => array(
+                    'Brut' => "Brut",
+                    'Doux' => "Doux",
+                    'Demi-sec' => "Demi-sec",
+                    'Moelleux' => "Moelleux",
+                    'Sec' => "Sec"),
+                'multiple' => false,
+                'empty_value' => '- Choisissez un type -'
+            ))
+            ->add('color', 'choice', array(
+                'choices' => array(
+                    'white' => "Blanc",
+                    'red' => "Rouge",
+                    'rose' => "Rosé"),
+                'multiple' => false,
+                'empty_value' => '- Choisissez une couleur -'
+            ))
             ->add('quantite')
-            ->add('type')
+            ->add('year')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

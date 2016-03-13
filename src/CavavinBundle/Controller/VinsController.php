@@ -29,10 +29,10 @@ class VinsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CavavinBundle:Vins')->findAll();
+        $listVins = $em->getRepository('CavavinBundle:Vins')->findAll();
 
         return array(
-            'entities' => $entities,
+            'listVins' => $listVins
         );
     }
     /**
@@ -44,6 +44,7 @@ class VinsController extends Controller
      */
     public function createAction(Request $request)
     {
+        die('test');
         $entity = new Vins();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -76,7 +77,9 @@ class VinsController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Ajouter à ma cave',
+                                            'attr' => array(
+                                                'class' => 'btn btn-sm btn-success')));
 
         return $form;
     }
@@ -165,7 +168,9 @@ class VinsController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
+        $form->add('submit', 'submit', array('label' => 'Mettre à jour',
+                                            'attr' => array(
+                                                'class' => 'btn btn-sm btn-success')));
 
         return $form;
     }
@@ -240,8 +245,31 @@ class VinsController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('vins_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer ce vin',
+                                            'attr' => array(
+                                                'class' => 'btn btn-xs btn-danger')))
             ->getForm()
         ;
+    }
+
+    /**
+     * Creates a view for display white vine
+     *
+     * @Route("/white", name="vinsBlancs")
+     * @Template("CavavinBundle:Vins:listAllWhiteVine.html.twig")
+     */
+    public function showWhiteVineAction()
+    {
+        die('yolo');
+        $em = $this->getDoctrine()->getManager();
+        var_dump($em);die;
+
+        $listVins = $em
+            ->getRepository('CavavinBundle:Vins')
+            ->findAllByColor('white');
+
+        return array(
+            'listVins' => $listVins
+        );
     }
 }

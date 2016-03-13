@@ -1,15 +1,42 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Vins creation</h1>
+    <h1>Ajouter un vin à votre cave</h1>
 
-    {{ form(form) }}
+    <table class="record_properties table table-striped">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ form_widget(form.nom) }}</td>
+        </tr>
+        <tr>
+            <th>Region</th>
+            <td>{{ form_widget(form.region) }}</td>
+        </tr>
+        <tr>
+            <th>Quantité</th>
+            <td>{{ form_widget(form.quantite) }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ form_widget(form.type) }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ form_widget(form.color) }}</td>
+        </tr>
+        <tr>
+            <th>Millésime</th>
+            <td>{{ form_widget(form.year) }}</td>
+        </tr>
+        </tbody>
+    </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('vins') }}">
-            Retour à la liste
-        </a>
-    </li>
-</ul>
+    {{ form_rest(form) }}
+
+    <br/>
+
+    <a class="btn btn-primary" href="{{ path('vins') }}">
+        Retour à ma cave
+    </a>
 {% endblock %}
