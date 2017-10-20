@@ -266,7 +266,7 @@ class VinsController extends Controller
 
         $listVins = $em
             ->getRepository('CavavinBundle:Vins')
-            ->findAllByColor('white');
+            ->findAllByColor(Vins::COLOR_WHITE);
 
         return array(
             'listVins' => $listVins
