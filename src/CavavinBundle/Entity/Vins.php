@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vins
 {
+    const COLOR_RED = 'red';
+    const COLOR_WHITE = 'white';
+    const COLOR_ROSE = 'rose';
+
+
     /**
      * @var integer
      *

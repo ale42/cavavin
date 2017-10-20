@@ -2,6 +2,7 @@
 
 namespace CavavinBundle\Form;
 
+use CavavinBundle\Entity\Vins;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -47,9 +48,9 @@ class VinsType extends AbstractType
             ))
             ->add('color', 'choice', array(
                 'choices' => array(
-                    'white' => "Blanc",
-                    'red' => "Rouge",
-                    'rose' => "Rosé"),
+                    Vins::COLOR_WHITE => "Blanc",
+                    Vins::COLOR_RED => "Rouge",
+                    Vins::COLOR_ROSE => "Rosé"),
                 'multiple' => false,
                 'empty_value' => '- Choisissez une couleur -'
             ))
