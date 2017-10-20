@@ -16,7 +16,6 @@ class Vins
     const COLOR_WHITE = 'white';
     const COLOR_ROSE = 'rose';
 
-
     /**
      * @var integer
      *
